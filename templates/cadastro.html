@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"><title>Cadastro</title></head>
+<body>
+<h1>Cadastro</h1>
+<a href="/logout">Sair</a>
+
+<h2>Cadastrar item em falta</h2>
+<form method="post" action="/novo_item">
+  <label>Nome do item</label><br>
+  <input type="text" name="nome"><br>
+  <label>Categoria</label><br>
+  <select name="categoria">
+    <option>Livro</option>
+    <option>Roupa</option>
+    <option>Alimento</option>
+    <option>Higiene</option>
+    <option>Outro</option>
+  </select><br>
+  <label>Quantidade desejada</label><br>
+  <input type="number" name="quantidade" min="1"><br><br>
+  <button type="submit">Salvar item</button>
+</form>
+
+<h2>Registrar doação</h2>
+<form method="post" action="/nova_doacao">
+  <label>Item vinculado</label><br>
+  <select name="item_id">
+    {% for item in itens %}
+      <option value="{{ item[0] }}">{{ item[1] }}</option>
+    {% endfor %}
+  </select><br>
+  <label>Quantidade doada</label><br>
+  <input type="number" name="quantidade" min="1"><br><br>
+  <button type="submit">Confirmar doação</button>
+</form>
+</body>
+</html>

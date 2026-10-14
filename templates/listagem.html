@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"><title>Livros e Leitura</title></head>
+<body>
+<h1>Livros e Leitura</h1>
+
+{% if logado %}
+  <a href="/cadastro">Voltar ao cadastro</a>
+{% else %}
+  <a href="/login">Entrar como voluntária</a>
+{% endif %}
+
+{% if itens|length == 0 %}
+  <p>Nenhum item em falta no momento.</p>
+{% endif %}
+
+<ul>
+{% for item in itens %}
+  <li>
+    {{ item[1] }} ({{ item[2] }}) -
+    {% if item[4] >= item[3] %}
+      Atendido
+    {% else %}
+      Em falta - faltam {{ item[3] - item[4] }}
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>
+</body>
+</html>

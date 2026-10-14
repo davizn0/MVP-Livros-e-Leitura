@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Livros e Leitura{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="brand">
+    <div class="logo">LL</div>
+    <div>
+      <div class="name">Livros e Leitura</div>
+      <div class="sub">Biblioteca Social Riacho Fundo II</div>
+    </div>
+  </header>
+  {% with mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+      <ul class="flashes">{% for m in mensagens %}<li class="flash">{{ m }}</li>{% endfor %}</ul>
+    {% endif %}
+  {% endwith %}
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

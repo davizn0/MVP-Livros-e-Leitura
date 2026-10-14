@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"><title>Entrar</title></head>
+<body>
+<h1>Entrar</h1>
+<form method="post">
+  <label>E-mail</label><br>
+  <input type="email" name="email"><br>
+  <label>Senha</label><br>
+  <input type="password" name="senha"><br><br>
+  <button type="submit">Entrar</button>
+</form>
+{% if erro %}<p style="color:red">{{ erro }}</p>{% endif %}
+<a href="/">Ver itens que a ONG precisa</a>
+</body>
+</html>
