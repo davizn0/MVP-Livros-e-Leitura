@@ -199,3 +199,7 @@ select {
     font-size: 13px;
     text-align: center;
 }
+
+img {
+    max-width: 100%;
+}
