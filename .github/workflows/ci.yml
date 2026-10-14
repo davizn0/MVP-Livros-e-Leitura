@@ -1,4 +1,3 @@
-
 name: CI
 
 on:
@@ -10,6 +9,7 @@ on:
 jobs:
   testes:
     runs-on: ubuntu-latest
+
     steps:
       - name: Baixar código
         uses: actions/checkout@v4
