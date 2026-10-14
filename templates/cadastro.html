@@ -1,38 +1,52 @@
-<!doctype html>
-<html>
-<head><meta charset="UTF-8"><title>Cadastro</title></head>
-<body>
-<h1>Cadastro</h1>
-<a href="/logout">Sair</a>
+```html
+{% extends "base.html" %}
 
-<h2>Cadastrar item em falta</h2>
-<form method="post" action="/novo_item">
-  <label>Nome do item</label><br>
-  <input type="text" name="nome"><br>
-  <label>Categoria</label><br>
-  <select name="categoria">
-    <option>Livro</option>
-    <option>Roupa</option>
-    <option>Alimento</option>
-    <option>Higiene</option>
-    <option>Outro</option>
-  </select><br>
-  <label>Quantidade desejada</label><br>
-  <input type="number" name="quantidade" min="1"><br><br>
-  <button type="submit">Salvar item</button>
-</form>
+{% block title %}Cadastro | Livros e Leitura{% endblock %}
 
-<h2>Registrar doação</h2>
-<form method="post" action="/nova_doacao">
-  <label>Item vinculado</label><br>
-  <select name="item_id">
-    {% for item in itens %}
-      <option value="{{ item[0] }}">{{ item[1] }}</option>
-    {% endfor %}
-  </select><br>
-  <label>Quantidade doada</label><br>
-  <input type="number" name="quantidade" min="1"><br><br>
-  <button type="submit">Confirmar doação</button>
-</form>
-</body>
-</html>
+{% block content %}
+<section class="card">
+    <h1>Cadastro</h1>
+
+    <p><a href="/logout">Sair</a></p>
+
+    <h2>Cadastrar item em falta</h2>
+
+    <form method="post" action="/novo_item">
+        <label for="nome">Nome do item</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="categoria">Categoria</label>
+        <select id="categoria" name="categoria" required>
+            <option>Livro</option>
+            <option>Roupa</option>
+            <option>Alimento</option>
+            <option>Higiene</option>
+            <option>Outro</option>
+        </select>
+
+        <label for="quantidade">Quantidade desejada</label>
+        <input type="number" id="quantidade" name="quantidade" min="1" required>
+
+        <button type="submit">Salvar item</button>
+    </form>
+</section>
+
+<section class="card">
+    <h2>Registrar doação</h2>
+
+    <form method="post" action="/nova_doacao">
+        <label for="item_id">Item vinculado</label>
+        <select id="item_id" name="item_id" required>
+            {% for item in itens %}
+                <option value="{{ item[0] }}">{{ item[1] }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="quantidade_doada">Quantidade doada</label>
+        <input type="number" id="quantidade_doada" name="quantidade" min="1" required>
+
+        <button type="submit">Confirmar doação</button>
+    </form>
+</section>
+{% endblock %}
+```

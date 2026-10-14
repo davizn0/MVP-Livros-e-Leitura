@@ -1,30 +1,39 @@
-<!doctype html>
-<html>
-<head><meta charset="UTF-8"><title>Livros e Leitura</title></head>
-<body>
-<h1>Livros e Leitura</h1>
+```html
+{% extends "base.html" %}
 
-{% if logado %}
-  <a href="/cadastro">Voltar ao cadastro</a>
-{% else %}
-  <a href="/login">Entrar como voluntária</a>
-{% endif %}
+{% block title %}Itens solicitados | Livros e Leitura{% endblock %}
 
-{% if itens|length == 0 %}
-  <p>Nenhum item em falta no momento.</p>
-{% endif %}
+{% block content %}
+<section class="card">
+    <h1>Itens solicitados</h1>
+    <p>Acompanhe as necessidades e as doações recebidas.</p>
 
-<ul>
-{% for item in itens %}
-  <li>
-    {{ item[1] }} ({{ item[2] }}) -
-    {% if item[4] >= item[3] %}
-      Atendido
+    {% if logado %}
+        <a class="button" href="/cadastro">Voltar ao cadastro</a>
     {% else %}
-      Em falta - faltam {{ item[3] - item[4] }}
+        <a class="button" href="/login">Entrar como voluntário</a>
     {% endif %}
-  </li>
-{% endfor %}
-</ul>
-</body>
-</html>
+
+    {% if itens|length == 0 %}
+        <p>Nenhum item em falta no momento.</p>
+    {% else %}
+        <ul class="item-list">
+            {% for item in itens %}
+                <li class="item">
+                    <strong>{{ item[1] }}</strong>
+                    <span>{{ item[2] }}</span>
+
+                    {% if item[4] >= item[3] %}
+                        <span class="status">Atendido</span>
+                    {% else %}
+                        <span class="status-pending">
+                            Em falta: {{ item[3] - item[4] }}
+                        </span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>
+{% endblock %}
+```

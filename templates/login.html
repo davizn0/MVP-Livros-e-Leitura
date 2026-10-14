@@ -1,16 +1,26 @@
-<!doctype html>
-<html>
-<head><meta charset="UTF-8"><title>Entrar</title></head>
-<body>
-<h1>Entrar</h1>
-<form method="post">
-  <label>E-mail</label><br>
-  <input type="email" name="email"><br>
-  <label>Senha</label><br>
-  <input type="password" name="senha"><br><br>
-  <button type="submit">Entrar</button>
-</form>
-{% if erro %}<p style="color:red">{{ erro }}</p>{% endif %}
-<a href="/">Ver itens que a ONG precisa</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Entrar | Livros e Leitura{% endblock %}
+
+{% block content %}
+<section class="card">
+    <h1>Entrar</h1>
+    <p>Acesse sua conta de voluntário.</p>
+
+    <form method="post">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" required>
+
+        <button type="submit">Entrar</button>
+    </form>
+
+    {% if erro %}
+        <p class="error">{{ erro }}</p>
+    {% endif %}
+
+    <p><a href="/">Ver itens que a ONG precisa</a></p>
+</section>
+{% endblock %}

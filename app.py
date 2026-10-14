@@ -4,11 +4,9 @@ import sqlite3
 app = Flask(__name__)
 app.secret_key = "123456"
 
-# conecta no banco de dados (cria o arquivo se ainda nao existir)
 conexao = sqlite3.connect("livros.db", check_same_thread=False)
 cursor = conexao.cursor()
 
-# cria as tabelas, se ainda nao existirem
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS voluntario (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -28,7 +26,6 @@ CREATE TABLE IF NOT EXISTS item (
 """)
 conexao.commit()
 
-# cria a voluntaria de teste, se ainda nao existir
 cursor.execute("SELECT * FROM voluntario WHERE email = 'voluntaria@ongleituras.org'")
 resultado = cursor.fetchone()
 if resultado == None:
