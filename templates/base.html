@@ -14,6 +14,11 @@
       <div class="sub">Biblioteca Social Riacho Fundo II</div>
     </div>
   </header>
+  <div class="acessibilidade">
+    <button type="button" onclick="aumentarTexto()">A+</button>
+    <button type="button" onclick="diminuirTexto()">A-</button>
+    <button type="button" onclick="alternarContraste()">Alto contraste</button>
+  </div>
   {% with mensagens = get_flashed_messages() %}
     {% if mensagens %}
       <ul class="flashes">{% for m in mensagens %}<li class="flash">{{ m }}</li>{% endfor %}</ul>
@@ -22,5 +27,22 @@
   <main class="container">
     {% block content %}{% endblock %}
   </main>
+<script>
+  var zoom = 1;
+
+  function aumentarTexto() {
+    zoom = zoom + 0.15;
+    document.body.style.zoom = zoom;
+  }
+
+  function diminuirTexto() {
+    zoom = zoom - 0.15;
+    document.body.style.zoom = zoom;
+  }
+
+  function alternarContraste() {
+    document.body.classList.toggle("alto-contraste");
+  }
+</script>
 </body>
 </html>
