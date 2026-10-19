@@ -199,3 +199,37 @@ select {
     font-size: 13px;
     text-align: center;
 }
+
+img {
+    max-width: 100%;
+}
+
+.acessibilidade {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.acessibilidade button {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+body.alto-contraste { background: #000; color: #fff; }
+body.alto-contraste .card { background: #000; border-color: #fff; }
+body.alto-contraste a { color: #ffff00; }
+body.alto-contraste .sub { color: #ddd; }
+body.alto-contraste .logo { background: #fff; color: #000; }
+body.alto-contraste .acessibilidade button { background: #000; color: #fff; border-color: #fff; }
+body.alto-contraste .btn-primario { background: #ffff00; color: #000; }
+body.alto-contraste input,
+body.alto-contraste select { background: #000; color: #fff; border-color: #fff; }
